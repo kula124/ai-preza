@@ -3,3 +3,7 @@
 ---
 
 A practical guide for software agencies
+
+---
+
+**Ivan Kuliš**

@@ -46,9 +46,15 @@ export default function SlideViewer({
   }, [currentSlide, totalSlides, router]);
 
   return (
-    <div className="h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white flex flex-col">
+    <div className="h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white flex flex-col relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+      </div>
       {/* Main slide content */}
-      <main className="flex-1 overflow-y-auto p-8">
+      <main className="flex-1 overflow-y-auto p-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="prose prose-invert prose-lg max-w-none [&_ul]:list-disc [&_ul]:ml-6 [&_ol]:list-decimal [&_ol]:ml-6">
             <ReactMarkdown
@@ -62,7 +68,7 @@ export default function SlideViewer({
       </main>
 
       {/* Navigation footer */}
-      <footer className="flex-shrink-0 p-6 flex items-center justify-between bg-black/20 backdrop-blur-sm">
+      <footer className="flex-shrink-0 p-6 flex items-center justify-between bg-black/30 backdrop-blur-md border-t border-white/10 relative z-10">
         <button
           onClick={() => currentSlide > 1 && router.push(`/slides/${currentSlide - 1}`)}
           disabled={currentSlide === 1}
