@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -12,15 +12,63 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Presentation-specific markdown styling */
+.prose h1 {
+  @apply text-5xl font-bold mb-8 text-white;
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.prose h2 {
+  @apply text-3xl font-semibold mb-6 mt-8 text-blue-300;
+}
+
+.prose h3 {
+  @apply text-2xl font-semibold mb-4 mt-6 text-blue-200;
+}
+
+.prose p {
+  @apply text-xl leading-relaxed mb-4 text-gray-200;
+}
+
+.prose ul, .prose ol {
+  @apply text-xl space-y-3 mb-6;
+}
+
+.prose li {
+  @apply text-gray-200;
+}
+
+.prose strong {
+  @apply text-white font-bold;
+}
+
+.prose code {
+  @apply bg-blue-900/30 text-blue-300 px-2 py-1 rounded;
+}
+
+.prose hr {
+  @apply border-gray-700 my-8;
+}
+
+.prose a {
+  @apply text-blue-400 hover:text-blue-300 underline;
+}
+
+/* Checkmarks and crosses for lists */
+.prose li::marker {
+  @apply text-blue-400;
+}
+
+/* Emoji support */
+.prose {
+  @apply text-gray-100;
 }
